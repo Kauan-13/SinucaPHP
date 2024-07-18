@@ -5,21 +5,13 @@ include_once("../class/Player.php");
 
 extract($_POST);
 
-if($mail != "" && $mail != null && $pass != "" && $pass != null && $confirmPass != "" && $confirmPass != null){
-    if($pass == $confirmPass){
-        $pass = password_hash("$pass", PASSWORD_DEFAULT);
-
-        $Login = new Login($conn);
-
-        $Login->setData($mail,$pass);
-
-        $Login->register();
-
-        $dataID = $Login->readIDLogin();
+if($email != "" && $email != null && $password != "" && $password != null && $confirmPassword != "" && $confirmPassword != null){
+    if($password == $confirmPassword){
+        $password = password_hash("$password", PASSWORD_DEFAULT);
 
         $Player = new Player($conn);
 
-        $Player->setData($dataID->id,$name);
+        $Player->setData($email,$password,$name);
 
         $Player->register();
 

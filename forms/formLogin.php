@@ -9,11 +9,11 @@
     <form action="" method="post">
         <div>
             <div>Email: </div>
-            <input type="text" name="mail" id="mail">
+            <input type="text" name="email" id="email">
         </div>
         <div>
             <div>Senha: </div>
-            <input type="password" name="pass" id="pass">
+            <input type="password" name="password" id="password">
         </div>
         <a href="formRegister.php">Ainda não possuo cadastro</a>
     </form>
