@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="../crud/crudLogin.php" method="post">
         <div>
             <div>Email: </div>
             <input type="text" name="email" id="email">
@@ -15,6 +15,9 @@
             <div>Senha: </div>
             <input type="password" name="password" id="password">
         </div>
+        <br>
+        <button type="submit">Entrar</button>
+        <br><br>
         <a href="formRegister.php">Ainda não possuo cadastro</a>
     </form>
 </body>

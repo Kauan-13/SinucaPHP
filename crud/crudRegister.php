@@ -1,25 +1,34 @@
 <?php
 include_once("../connect/connect.php");
-include_once("../class/Login.php");
 include_once("../class/Player.php");
 
 extract($_POST);
 
+$Players = new Players($conn);
+
 if($email != "" && $email != null && $password != "" && $password != null && $confirmPassword != "" && $confirmPassword != null){
-    if($password == $confirmPassword){
-        $password = password_hash("$password", PASSWORD_DEFAULT);
+    
+    $result = $Players->verifyEmail($email);
 
-        $Player = new Player($conn);
+    if(!$result){
+        if($password == $confirmPassword){
+            $password = password_hash("$password", PASSWORD_DEFAULT);
 
-        $Player->setData($email,$password,$name);
+            $Players->setData($email,$password,$name);
 
-        $Player->register();
+            $Players->register();
 
+        }else{
+            echo "<script language='javascript' type='text/javascript'>
+                        alert('A senha e a confirmação da senha devem ser iguais');
+                        window.location.href='../forms/formRegister.php';
+                </script>";
+        }
     }else{
         echo "<script language='javascript' type='text/javascript'>
-                    alert('A senha e a confirmação da senha devem ser iguais');
-                    window.location.href='../forms/formRegister.php';
-            </script>";
+                        alert('Esse Email já foi cadastrado');
+                        window.location.href='../forms/formRegister.php';
+                </script>";
     }
 }else{
     echo "<script language='javascript' type='text/javascript'>

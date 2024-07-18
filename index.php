@@ -6,7 +6,7 @@
     <title>SinucaPHP</title>
 </head>
 <body>
-    <a href='forms/formLogin.php'><button>
+    <a href='protectedPage.php'><button>
         ENTRAR
     </button></a>
 </body>
