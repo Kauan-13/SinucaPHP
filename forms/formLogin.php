@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="../crud/crudLogin.php" method="post">
+    <form action="../php/loginPlayer.php" method="post">
         <div>
             <div>Email: </div>
             <input type="text" name="email" id="email">

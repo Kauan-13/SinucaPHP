@@ -6,7 +6,7 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <form action="../crud/crudRegister.php" method="post">
+    <form action="../php/crudRegister.php" method="post">
         <div>
             <div>Email: </div>
             <input type="text" name="email" id="email">

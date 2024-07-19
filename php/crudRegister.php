@@ -1,22 +1,22 @@
 <?php
 include_once("../connect/connect.php");
-include_once("../class/Player.php");
+include_once("../classes/Players.php");
 
 extract($_POST);
 
-$Players = new Players($conn);
+$objPlayer = new Players($conn);
 
 if($email != "" && $email != null && $password != "" && $password != null && $confirmPassword != "" && $confirmPassword != null){
     
-    $result = $Players->verifyEmail($email);
+    $result = $objPlayer->verifyEmail($email);
 
     if(!$result){
         if($password == $confirmPassword){
             $password = password_hash("$password", PASSWORD_DEFAULT);
 
-            $Players->setData($email,$password,$name);
+            $objPlayer->setData($email,$password,$name);
 
-            $Players->register();
+            $objPlayer->register();
 
         }else{
             echo "<script language='javascript' type='text/javascript'>

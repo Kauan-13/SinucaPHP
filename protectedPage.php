@@ -1,5 +1,5 @@
 <?php
-include_once("class/Session.php"); 
+include_once("classes/Sessions.php"); 
    
 session_start();
 
@@ -16,7 +16,7 @@ if(isset($_SESSION['login'])) {
         <div>
             Olá <?= $_SESSION["playerName"] ?>
             <?php
-                echo "<a href='crud/crudLogoff.php'> Sair </a>";
+                echo "<a href='php/logoffPlayer.php'> Sair </a>";
             ?>
         </div>
     </body>

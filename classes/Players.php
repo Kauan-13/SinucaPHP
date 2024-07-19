@@ -25,11 +25,12 @@ class Players
         $sql = $this->conect->prepare("SELECT email FROM players WHERE email = ?");
         $sql->bindParam(1,$this->email);
 
-        if($sql->execute()){
+        try{
+            $sql->execute();
             $result = $sql->fetch(PDO::FETCH_BOUND);
             return $result;
-        }else{
-            echo "Erro ao checar email";
+        }catch(PDOException $e){
+            echo "Erro ao checar email ".utf8_encode($e->getMessage());
         }
     }
 
@@ -40,10 +41,11 @@ class Players
         $sql->bindParam(2,$this->password);
         $sql->bindParam(3,$this->name);
 
-        if($sql->execute()){
+        try{
+            $sql->execute();
             echo "Cadastro Realizado!";
-        }else{
-            echo "Dados não enviados :(";
+        }catch(PDOException $e){
+            echo "Dados não enviados :( ".utf8_encode($e->getMessage());
         }
     }
 
@@ -53,11 +55,12 @@ class Players
         $sql = $this->conect->prepare("SELECT id, name, password FROM players WHERE email = ?");
         $sql->bindParam(1,$this->email);
 
-        if($sql->execute()){
+        try{
+            $sql->execute();
             $result = $sql->fetch(PDO::FETCH_OBJ);
             return $result;
-        }else{
-            echo "Erro ao checar dados";
+        }catch(PDOException $e){
+            echo "Erro ao checar dados ".utf8_encode($e->getMessage());
         }
     }
 }

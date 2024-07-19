@@ -1,9 +1,6 @@
 <?php
-
-class Session
+class Sessions
 {
-    private $conect;
-
     public static function playerAllowed($id, $name){
         session_start();
         $_SESSION['login'] = session_id();
@@ -19,3 +16,4 @@ class Session
         exit; 
     }
 }
+?>

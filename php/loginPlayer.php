@@ -1,18 +1,18 @@
 <?php
 include_once("../connect/connect.php");
-include_once("../class/Player.php");
-include_once("../class/Session.php");
+include_once("../classes/Players.php");
+include_once("../classes/Sessions.php");
 
 extract($_POST);
 
-$Players = new Players($conn);
-$Session = new Session($conn);
+$objPlayer = new Players($conn);
+$objSession = new Sessions($conn);
 
 if($email != "" && $email != null && $password != "" && $password != null){
-    $result = $Players->readPlayersLogin($email);
+    $result = $objPlayer->readPlayersLogin($email);
 
     if(password_verify($password, $result->password)){
-        $Session->playerAllowed($result->id,$result->name);
+        $objSession->playerAllowed($result->id,$result->name);
     }else{
         echo    "<script language='javascript' type='text/javascript'>
                     alert('Login Incorreto :(');
