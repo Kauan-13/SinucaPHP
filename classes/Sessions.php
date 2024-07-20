@@ -1,7 +1,8 @@
 <?php
 class Sessions
 {
-    public static function playerAllowed($id, $name){
+    public static function playerAllowed($id, $name)
+    {
         session_start();
         $_SESSION['login'] = session_id();
         $_SESSION['playerId'] = $id;
@@ -9,7 +10,8 @@ class Sessions
         header("location:../protectedPage.php");
     }
 
-    public static function logoff(){  
+    public static function logoff()
+    {  
         session_start();
         session_destroy();
         header("location: ../index.php");

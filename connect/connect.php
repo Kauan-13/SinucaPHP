@@ -13,7 +13,7 @@
     try{
         $conn = new PDO($config,$user_bd,$pass_bd); 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   
-    } catch(PDOException $e) {
+    }catch(PDOException $e) {
         echo "Erro de conexão com BD: ".utf8_encode($e->getMessage());
     }
 ?>

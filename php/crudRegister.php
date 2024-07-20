@@ -6,7 +6,7 @@ extract($_POST);
 
 $objPlayer = new Players($conn);
 
-if($email != "" && $email != null && $password != "" && $password != null && $confirmPassword != "" && $confirmPassword != null){
+if(!empty($email) && !empty($password) && !empty($confirmPassword)){
     
     $result = $objPlayer->verifyEmail($email);
 

@@ -8,7 +8,7 @@ extract($_POST);
 $objPlayer = new Players($conn);
 $objSession = new Sessions($conn);
 
-if($email != "" && $email != null && $password != "" && $password != null){
+if(!empty($email) && !empty($password)){
     $result = $objPlayer->readPlayersLogin($email);
 
     if(password_verify($password, $result->password)){

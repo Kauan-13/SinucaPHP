@@ -15,9 +15,10 @@ if(isset($_SESSION['login'])) {
     <body>
         <div>
             Olá <?= $_SESSION["playerName"] ?>
-            <?php
-                echo "<a href='php/logoffPlayer.php'> Sair </a>";
-            ?>
+            <br><br>
+            <a href="forms/formRegisterGroup.php"><button>Criar Grupo</button></a>
+            <br><br>
+            <a href='php/logoffPlayer.php'> Sair </a>
         </div>
     </body>
     </html>

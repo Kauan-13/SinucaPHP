@@ -19,7 +19,8 @@ class Players
         $this->name = $name;
     }
 
-    public function verifyEmail($email){
+    public function verifyEmail($email)
+    {
         $this->email = $email;
 
         $sql = $this->conect->prepare("SELECT email FROM players WHERE email = ?");
@@ -49,7 +50,8 @@ class Players
         }
     }
 
-    public function readPlayersLogin($email){
+    public function readPlayersLogin($email)
+    {
         $this->email = $email;
 
         $sql = $this->conect->prepare("SELECT id, name, password FROM players WHERE email = ?");
@@ -59,6 +61,36 @@ class Players
             $sql->execute();
             $result = $sql->fetch(PDO::FETCH_OBJ);
             return $result;
+        }catch(PDOException $e){
+            echo "Erro ao checar dados ".utf8_encode($e->getMessage());
+        }
+    }
+
+    public function joinGroup($playerId,$groupId)
+    { 
+        
+        $sql = $this->conect->prepare("SELECT groups_id FROM players WHERE id = ?");
+        $sql->bindParam(1,$playerId);
+
+        try{
+            $sql->execute();
+            $result = $sql->fetch(PDO::FETCH_OBJ);
+            
+            $antigoGroupsId = $result->groups_id;
+
+            $sql = $this->conect->prepare("UPDATE players SET groups_id = ? WHERE id = ?");
+            
+            $groupId = $antigoGroupsId."-".$groupId;
+
+            $sql->bindParam(1,$groupId);
+            $sql->bindParam(2,$playerId);
+
+            try{
+                $sql->execute();
+                echo "Cadastro Realizado!";
+            }catch(PDOException $e){
+                echo "Erro ao checar dados ".utf8_encode($e->getMessage());
+            }
         }catch(PDOException $e){
             echo "Erro ao checar dados ".utf8_encode($e->getMessage());
         }

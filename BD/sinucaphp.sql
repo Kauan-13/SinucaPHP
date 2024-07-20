@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 18/07/2024 às 13:23
+-- Tempo de geração: 20/07/2024 às 15:37
 -- Versão do servidor: 8.3.0
 -- Versão do PHP: 8.2.18
 
@@ -33,6 +33,22 @@ CREATE TABLE IF NOT EXISTS `players` (
   `email` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL,
   `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `groups_id` varchar(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `table_groups`
+--
+
+DROP TABLE IF EXISTS `table_groups`;
+CREATE TABLE IF NOT EXISTS `table_groups` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name_group` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `admin_player_id` varchar(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `players_id` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
